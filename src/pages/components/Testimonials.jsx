@@ -61,7 +61,6 @@ const testimonials = [
   },
 ];
 
-console.log(testimonials.length)
 export const Testimonials = () => {
   return (
     <div className="testimonial-section">
