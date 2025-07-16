@@ -1,8 +1,24 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useState, useEffect} from "react";
 
 export const Header = () => {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+    useEffect(() => {
+        const handleScroll = () => {
+        setIsScrolled(window.scrollY !== 0);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        // Cleanup on unmount
+        return () => {
+        window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
-        <nav>
+        <nav className={isScrolled ? "scrolled" : ""}>
             <div className="navigation">
                 <a href="/">
                     <div className="logo">
