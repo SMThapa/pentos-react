@@ -1,0 +1,44 @@
+import { Link } from "react-router-dom"
+
+export const Header = () => {
+    return (
+        <nav>
+            <div className="navigation">
+                <a href="/">
+                    <div className="logo">
+                        <img src="/logo/logo_big.png" alt=""/>
+                    </div>
+                </a>
+                <div className="menu-list">
+                    <a href="/" className="active">Home</a>
+
+                    <div className="dropdown">
+                        <a href="/pages/productListing.html">Products <img src="/down.png" alt="icon"/></a>
+                        <div className="dropdown-content">
+                            <a href="/pages/product/uavs">UAVs <img src="/drone.png" alt="icon" loading="lazy" /></a>
+                            <a href="/pages/product/cars">cars <img src="/car.png" alt="icon" loading="lazy"/></a>
+                            <a href="/pages/product/boats">boats <img src="/boat.png" alt="icon" loading="lazy"/></a>
+                            <a href="/pages/product/others">others <img src="/others.png" alt="icon" loading="lazy"/></a>
+                        </div>
+                    </div>
+
+                    <a href="/pages/accessories">Accessories</a>
+                    <a href="/pages/services.html">Services</a>
+                    <a href="/pages/blog.html">Explore</a>
+                    <a href="/pages/about-us">About Us</a>
+                </div>
+                <div className="action-buttons">
+                    <Link to="./pages/contact.html">
+                        <button className="btn-2">Get In Touch
+                            <span>
+                                <img src="/up-right-arrow2.png" alt="icon" className="first"/>
+                                <img src="/up-right-arrow2.png" alt="icon" className="second"/>
+                            </span>
+                        </button>
+                    </Link>
+                </div>
+            </div>
+        </nav>
+    )
+}
+    
