@@ -51,14 +51,14 @@ const blogPosts = [
   },
 ];
 
-export const Blogs = () => {
+export const Blogs = ({title, description}) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
   return (
     <div className="blogs-section">
-      <div className="title">Blog & Articles</div>
-      <div className="description">Latest Articles</div>
+      <div className="title">{title}</div>
+      <div className="description">{description}</div>
 
       {/* Custom Navigation Buttons */}
       <div className="swiper-action-buttons">

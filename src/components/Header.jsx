@@ -29,7 +29,7 @@ export const Header = () => {
                     <a href="/" className="active">Home</a>
 
                     <div className="dropdown">
-                        <a href="/pages/productListing.html">Products <img src="/down.png" alt="icon"/></a>
+                        <a href="/product">Products <img src="/down.png" alt="icon"/></a>
                         <div className="dropdown-content">
                             <a href="/pages/product/uavs">UAVs <img src="/drone.png" alt="icon" loading="lazy" /></a>
                             <a href="/pages/product/cars">cars <img src="/car.png" alt="icon" loading="lazy"/></a>
@@ -38,13 +38,13 @@ export const Header = () => {
                         </div>
                     </div>
 
-                    <a href="/pages/accessories">Accessories</a>
-                    <a href="/pages/services.html">Services</a>
-                    <a href="/pages/blog.html">Explore</a>
-                    <a href="/pages/about-us">About Us</a>
+                    <a href="/accesories">Accessories</a>
+                    <a href="/services">Services</a>
+                    <a href="/blogs">Explore</a>
+                    <a href="/about">About Us</a>
                 </div>
                 <div className="action-buttons">
-                    <Link to="./pages/contact.html">
+                    <Link to="/contact">
                         <button className="btn-2">Get In Touch
                             <span>
                                 <img src="/up-right-arrow2.png" alt="icon" className="first"/>

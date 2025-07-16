@@ -1,0 +1,38 @@
+.page-services .service-banner{
+    text-align: center;
+}
+.page-services .service-banner .btn-2{
+    width: fit-content;
+    margin: 0 auto 85px;    
+}
+.page-services .service-banner .banner-title{
+    font-size: clamp(2rem, 20vw, 5rem);
+    line-height: 1;
+    margin-bottom: 25px;
+}
+.page-services .service-banner .banner-description{
+    font-size: clamp(.9rem, 20vw, 1.5rem);
+    line-height: 1;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 25px;
+}
+.page-services .services-contents{
+    display: flex;
+    column-gap: 100px;        
+}
+.page-services .services-contents .left-content{
+    position: sticky;
+    height: fit-content;
+    top: 80px;
+    width: 60%;    
+    padding: 45px 0;
+}
+.page-services .services-contents .right-content{
+    padding: 45px 0;
+    width: 100%;
+}
+
+.page-services .services-contents .right-content .content-card{
+    margin-bottom: 45px;
+}

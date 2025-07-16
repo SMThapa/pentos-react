@@ -1,0 +1,85 @@
+:root{
+    --primary-color:#5AEF90;  
+    --img-to-primary:brightness(0) saturate(100%) invert(79%) sepia(87%) saturate(355%) hue-rotate(70deg) brightness(98%) contrast(91%);
+}
+
+.page-width.blog-single{
+    padding: 110px 25px 80px ;
+}
+.page-blog .blogs-section{
+    padding: 0;
+}
+.page-blog .blog-slider{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+}
+.page-blog .blog-banner img{
+    height: clamp(400px, 50vw, 500px);
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.page-blog .blog-divide{
+    margin-top: 25px;
+    /* display: grid; */
+    grid-template-columns: 1000px auto;
+    gap: 25px;
+}
+.page-blog .single-blog .blog-contents .tags{
+    display: flex;        
+    column-gap: 25px;
+    margin: 16px 0;
+}
+.page-blog .single-blog .blog-contents .tags span{
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+.page-blog .single-blog .blog-contents .tags img{
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(281deg) brightness(102%) contrast(104%);    
+    transition: var(--transition);
+}
+.page-blog .single-blog .blog-contents .blog-title{
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+.page-blog .single-blog .blog-contents hr{
+    margin: 25px 0;
+    opacity: .4;
+}
+.page-blog .single-blog .blog-contents .blog-text-content h2{
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+.page-blog .single-blog .blog-contents .blog-text-content h3{
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+.page-blog .single-blog .blog-contents .blog-text-content ul li{
+    list-style: none;
+    display: flex;    
+    padding-left: 25px;
+}
+.page-blog .single-blog .blog-contents .blog-text-content ul li .dot{
+    height: 5px;
+    width: 5px;
+    background: white;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12px;
+    margin-top: 15px;
+    border-radius: 50%;
+}
+
+.page-blog .related-blog{
+    margin-top: 200px;
+
+    .btn-1{
+        margin: 25px auto;
+    }
+}

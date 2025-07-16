@@ -385,7 +385,7 @@ export const Home = () => {
     </section>
 
     <section id="blogs">
-        <Blogs/>
+        <Blogs title={'Blog & Articles'} description={'Latest Articles'}/>
     </section>
 
     </Fragment>
