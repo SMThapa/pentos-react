@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 export const Blog = () => {
   return (
       <section>
@@ -8,9 +9,9 @@ export const Blog = () => {
 
                 <div className="blog-slider">                
                     <div className="blog-card">
-                        <a href="/blogs/1" className="center-btn">
+                        <Link to="/blogs/1" className="center-btn">
                             View <img src="/top-right.png" alt="icon" />
-                        </a>
+                        </Link>
                         <div className="tags">
                             <span>``
                                 <img src="/supermarket.png" alt="icon" />
@@ -25,9 +26,9 @@ export const Blog = () => {
                         <img src="/blog/rc-plane.jpg" alt="" />
                     </div>
                     <div className="blog-card">
-                        <a href="/blogs/1" className="center-btn">
+                        <Link to="/blogs/1" className="center-btn">
                             View <img src="/top-right.png" alt="icon" />
-                        </a>
+                        </Link>
                         <div className="tags">
                             <span>
                                 <img src="/supermarket.png" alt="icon" />
@@ -42,9 +43,9 @@ export const Blog = () => {
                         <img src="/assets/blog/truck.jpg" alt="" />
                     </div>
                     <div className="blog-card">
-                        <a href="/blogs/1" className="center-btn">
+                        <Link to="/blogs/1" className="center-btn">
                             View <img src="/top-right.png" alt="icon" />
-                        </a>
+                        </Link>
                         <div className="tags">
                             <span>
                                 <img src="/supermarket.png" alt="icon" />
@@ -59,9 +60,9 @@ export const Blog = () => {
                         <img src="/blog/battery.jpg" alt="" />
                     </div>
                     <div className="blog-card">
-                        <a href="/blogs/1" className="center-btn">
+                        <Link to="/blogs/1" className="center-btn">
                             View <img src="/top-right.png" alt="icon" />
-                        </a>
+                        </Link>
                         <div className="tags">
                             <span>
                                 <img src="/supermarket.png" alt="icon" />
@@ -76,9 +77,9 @@ export const Blog = () => {
                         <img src="/blog/battery.jpg" alt="" />
                     </div> 
                     <div className="blog-card">
-                        <a href="/blogs/1" className="center-btn">
+                        <Link to="/blogs/1" className="center-btn">
                             View <img src="/top-right.png" alt="icon" />
-                        </a>
+                        </Link>
                         <div className="tags">
                             <span>
                                 <img src="/supermarket.png" alt="icon" />
@@ -93,9 +94,9 @@ export const Blog = () => {
                         <img src="/blog/rc-plane.jpg" alt="" />
                     </div>    
                     <div className="blog-card">
-                        <a href="/blogs/1" className="center-btn">
+                        <Link to="/blogs/1" className="center-btn">
                             View <img src="/top-right.png" alt="icon" />
-                        </a>
+                        </Link>
                         <div className="tags">
                             <span>
                                 <img src="/supermarket.png" alt="icon" />

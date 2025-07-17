@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect} from "react";
+import { NavLink, Link } from "react-router-dom";
 
 export const Header = () => {
 
@@ -20,28 +20,28 @@ export const Header = () => {
     return (
         <nav className={isScrolled ? "scrolled" : ""}>
             <div className="navigation">
-                <a href="/">
+                <Link to="/">
                     <div className="logo">
                         <img src="/logo/logo_big.png" alt=""/>
                     </div>
-                </a>
+                </Link>
                 <div className="menu-list">
-                    <a href="/" className="active">Home</a>
+                    <NavLink to="/">Home</NavLink>
 
                     <div className="dropdown">
-                        <a href="/product">Products <img src="/down.png" alt="icon"/></a>
+                        <NavLink to="/product">Products <img src="/down.png" alt="icon"/></NavLink>
                         <div className="dropdown-content">
-                            <a href="/pages/product/uavs">UAVs <img src="/drone.png" alt="icon" loading="lazy" /></a>
-                            <a href="/pages/product/cars">cars <img src="/car.png" alt="icon" loading="lazy"/></a>
-                            <a href="/pages/product/boats">boats <img src="/boat.png" alt="icon" loading="lazy"/></a>
-                            <a href="/pages/product/others">others <img src="/others.png" alt="icon" loading="lazy"/></a>
+                            <Link to="/pages/product/uavs">UAVs <img src="/drone.png" alt="icon" loading="lazy" /></Link>
+                            <Link to="/pages/product/cars">cars <img src="/car.png" alt="icon" loading="lazy"/></Link>
+                            <Link to="/pages/product/boats">boats <img src="/boat.png" alt="icon" loading="lazy"/></Link>
+                            <Link to="/pages/product/others">others <img src="/others.png" alt="icon" loading="lazy"/></Link>
                         </div>
                     </div>
 
-                    <a href="/accesories">Accessories</a>
-                    <a href="/services">Services</a>
-                    <a href="/blogs">Explore</a>
-                    <a href="/about">About Us</a>
+                    <NavLink to="/accesories">Accessories</NavLink>
+                    <NavLink to="/services">Services</NavLink>
+                    <NavLink to="/blogs">Explore</NavLink>
+                    <NavLink to="/about">About Us</NavLink>
                 </div>
                 <div className="action-buttons">
                     <Link to="/contact">

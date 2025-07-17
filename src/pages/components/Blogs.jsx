@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import { Link } from "react-router-dom";
 
 const blogPosts = [
   {
@@ -116,11 +117,11 @@ export const Blogs = ({title, description}) => {
         ))}
       </Swiper>
 
-      <a href="./pages/blog.html">
+      <Link to="/blog/1">
         <button className="btn-1">
           View All <img src="/top-right.png" alt="icon" />
         </button>
-      </a>
+      </Link>
     </div>
   );
 };
