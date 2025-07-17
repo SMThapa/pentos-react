@@ -101,17 +101,6 @@ section .title{
     margin-bottom: 25px;
     width: 100%;
 }
-section .title2{
-    font-family: var(--font-bold);
-    font-size: clamp(1.2rem, 20vw, 2rem);            
-    margin-bottom: 25px;
-    width: fit-content;
-    border-left: 5px solid var(--primary-color);
-    border-right: 5px solid var(--primary-color);
-    color:var(--primary-color);
-    padding:0 20px;
-    border-radius: 8px;
-}
 section .description{
     font-size: clamp(1.1rem, 20rem, 1.8rem);
     /* max-width: 60%; */

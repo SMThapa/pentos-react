@@ -1,9 +1,10 @@
 import { useState, useEffect} from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 export const Header = () => {
 
     const [isScrolled, setIsScrolled] = useState(false);
+    const {pathname} = useLocation();
     useEffect(() => {
         const handleScroll = () => {
         setIsScrolled(window.scrollY !== 0);
@@ -16,6 +17,10 @@ export const Header = () => {
         window.removeEventListener("scroll", handleScroll);
         };
     }, []);
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     return (
         <nav className={isScrolled ? "scrolled" : ""}>

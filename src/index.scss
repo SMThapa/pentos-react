@@ -418,6 +418,7 @@ section .title2{
     border-radius: 8px;
     text-align: center;
     position: relative;
+    border: none;    
 }
 section .title2::after{
     content: '';
@@ -440,10 +441,10 @@ section .description{
     font-style: italic;
 }
 section .description2{
-    font-size: clamp(1rem, 20rem, 1.3rem);
+    font-size: clamp(1rem, 20rem, 1.2rem);
     /* max-width: 60%; */
     width: 100%;
-    line-height: 1;
+    line-height: 1.4;
     margin-bottom: 75px;  
     text-align: center;    
 }
