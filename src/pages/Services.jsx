@@ -49,7 +49,7 @@ export const Services = () => {
                         <div className="description2">From rapid prototypes to production-grade parts, we bridge the gap between concept and reality with advanced additive manufacturing technologies.</div>
                         <div className="content-card">
                             <div className="service-image">    
-                                <img src="/public/icons/sugar-cubes.png" alt="" />                                                         
+                                <img src="/icons/sugar-cubes.png" alt="" />                                                         
                             </div>
                             <div className="service-content">
                                 <h4 className="card-title">DLP 3D Printing</h4>
@@ -64,7 +64,7 @@ export const Services = () => {
                         </div>
                         <div className="content-card">
                             <div className="service-image"> 
-                                <img src="/public/icons/settings (1).png" alt="" />                                                                                                                     
+                                <img src="/icons/settings (1).png" alt="" />                                                                                                                     
                             </div>
                             <div className="service-content">
                                 <h4 className="card-title">FDM 3D Printing</h4>
@@ -79,7 +79,7 @@ export const Services = () => {
                         </div>
                         <div className="content-card">
                             <div className="service-image">                                                             
-                                <img src="/public/icons/industry.png" alt="" />                                                         
+                                <img src="/icons/industry.png" alt="" />                                                         
                             </div>
                             <div className="service-content">
                                 <h4 className="card-title">Silicone Molding & Vacuum Casting</h4>
@@ -98,7 +98,7 @@ export const Services = () => {
                         <div className="description2">We transform good ideas into manufacturable products through cutting-edge engineering and user-centered design.</div>
                         <div className="content-card">
                             <div className="service-image"> 
-                                <img src="/public/icons/processor.png" alt="" />                                                                                                                     
+                                <img src="/icons/processor.png" alt="" />                                                                                                                     
                             </div>
                             <div className="service-content">
                                 <h4 className="card-title">IoT Enclosure Design</h4>
@@ -113,7 +113,7 @@ export const Services = () => {
                         </div>
                         <div className="content-card">
                             <div className="service-image"> 
-                                <img src="/public/icons/analyse.png" alt="" />                                                                                                                     
+                                <img src="/icons/analyse.png" alt="" />                                                                                                                     
                             </div>
                             <div className="service-content">
                                 <h4 className="card-title">Simulation & Analysis</h4>
@@ -128,7 +128,7 @@ export const Services = () => {
                         </div>
                         <div className="content-card">
                             <div className="service-image">     
-                                <img src="/public/icons/prototyping.png" alt="" />                                                                                                                 
+                                <img src="/icons/prototyping.png" alt="" />                                                                                                                 
                             </div>
                             <div className="service-content">
                                 <h4 className="card-title">Industrial Design Consultancy</h4>
