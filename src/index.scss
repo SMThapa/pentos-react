@@ -463,7 +463,7 @@ section .here{
     width: 50%;
     height: 100%;
 }
-section p, ul li{
+section p{
     text-align: justify;
     font-size: clamp(.9rem, 10vw, 1.3rem);
     margin-bottom: 25px;
@@ -471,29 +471,138 @@ section p, ul li{
 section p a{
     color: var(--primary-color);
 }
-
-section .about-contents ul {
-    list-style: none;
+section .about-contents{
+    .hobby-content {
+        line-height: 1.6;
+        color: white; /* Changed to white */
+        font-size: 1.1rem;
+        text-align: left;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .hobby-features {
+        margin: 25px 0;
+        padding-left: 20px;
+    }
+    
+    .hobby-features li {
+        margin-bottom: 12px;
+        position: relative;
+        list-style-type: none;
+        padding-left: 25px;
+        color: white; /* Added white text color */
+    }
+    
+    .hobby-features li:before {
+        content: "✈︎";
+        color: #32CD32; /* Lime green */
+        position: absolute;
+        left: 0;
+    }
 }
-section .about-contents ul li{
-    position: relative; 
-    padding-left: 50px; 
-}
-.about-contents ul li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 20%;
-  transform: translateY(-50%); /* Vertically center */
-  width: 25px;  /* Size of your image */
-  height: 25px;
-  background: url("/svg2.svg") no-repeat center center;
-  background-size: contain; /* Scale image properly */
-}
+// section .about-contents ul {
+//     list-style: none;
+// }
+// section .about-contents ul li{
+//     position: relative; 
+//     padding-left: 50px; 
+// }
+// .about-contents ul li::before {
+//   content: "";
+//   position: absolute;
+//   left: 0;
+//   top: 20%;
+//   transform: translateY(-50%); /* Vertically center */
+//   width: 25px;  /* Size of your image */
+//   height: 25px;
+//   background: url("/svg2.svg") no-repeat center center;
+//   background-size: contain; /* Scale image properly */
+// }
 
 
 section .about-contents .glowing-object{    
     left: 100%;
+}
+section .why-us{
+    .drone-feature-highlight {
+        background: rgba(0, 255, 200, 0.08);
+        border-left: 3px solid #00ffc8;
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 0 5px 5px 0;
+    }
+    
+    .drone-feature-highlight h3 {
+        color: #00ffc8;
+        margin-top: 0;
+        font-size: 1.3rem;
+    }
+    .drone-features {
+        margin: 35px 0;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .drone-features li {
+        margin-bottom: 12px;
+        position: relative;
+        list-style-type: none;
+        padding-left: 30px;
+        text-align: start;
+    }
+    
+    .drone-features li:before {
+        content: "⚡";
+        color: #7df9ff;
+        position: absolute;
+        left: 0;
+    }
+    
+    .drone-tagline {
+        font-size: 1.2rem;
+        text-align: center;
+        margin: 40px 0 30px;
+    }
+    
+    .drone-cta {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .drone-button {
+        display: inline-block;
+        padding: 14px 35px;
+        background: #00ffc8;
+        color: #0a0a12;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+    }
+    
+    .drone-button.secondary {
+        background: transparent;
+        color: #00ffc8;
+        border: 2px solid #00ffc8;
+    }
+    
+    .drone-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 255, 200, 0.3);
+    }
+    
+    strong {
+        color: #7df9ff;
+        font-weight: 600;
+    }
 }
 section .why-us .glowing-object{
     top: 50%;

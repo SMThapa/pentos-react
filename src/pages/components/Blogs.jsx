@@ -13,42 +13,42 @@ const blogPosts = [
     date: "Oct 25, 2024",
     category: "Business",
     image: "/blog/rc-plane.jpg",
-    link: "./pages/blog-single.html",
+    link: "/blogs/1",
   },
   {
     title: "RC Cars vs. RC Trucks: Which One's Right for You?",
     date: "Oct 25, 2024",
     category: "Business",
     image: "/assets/blog/truck.jpg",
-    link: "./pages/blog-single.html",
+    link: "/blogs/1",
   },
   {
     title: "How to Maximize Battery Life in Your RC Toys.",
     date: "Oct 25, 2024",
     category: "Business",
     image: "/blog/battery.jpg",
-    link: "./pages/blog-single.html",
+    link: "/blogs/1",
   },
   {
     title: "Top 5 Tips for First-Time RC Pilots.",
     date: "Oct 25, 2024",
     category: "Business",
     image: "/blog/rc-plane.jpg",
-    link: "./pages/blog-single.html",
+    link: "/blogs/1",
   },
   {
     title: "RC Cars vs. RC Trucks: Which One's Right for You?",
     date: "Oct 25, 2024",
     category: "Business",
     image: "/assets/blog/truck.jpg",
-    link: "./pages/blog-single.html",
+    link: "/blogs/1",
   },
   {
     title: "How to Maximize Battery Life in Your RC Toys.",
     date: "Oct 25, 2024",
     category: "Business",
     image: "/blog/battery.jpg",
-    link: "./pages/blog-single.html",
+    link: "/blogs/1",
   },
 ];
 
@@ -97,9 +97,9 @@ export const Blogs = ({title, description}) => {
         {blogPosts.map((post, index) => (
           <SwiperSlide key={index}>
             <div className="blog-card">
-              <a href={post.link} className="center-btn">
+              <Link to={post.link} className="center-btn">
                 View <img src="/top-right.png" alt="icon" />
-              </a>
+              </Link>
               <div className="tags">
                 <span>
                   <img src="/supermarket.png" alt="icon" />

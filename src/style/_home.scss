@@ -133,26 +133,6 @@ section p a{
     color: var(--primary-color);
 }
 
-section .about-contents ul {
-    list-style: none;
-}
-section .about-contents ul li{
-    position: relative; 
-    padding-left: 50px; 
-}
-.about-contents ul li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 20%;
-  transform: translateY(-50%); /* Vertically center */
-  width: 25px;  /* Size of your image */
-  height: 25px;
-  background: url("/svg2.svg") no-repeat center center;
-  background-size: contain; /* Scale image properly */
-}
-
-
 section .about-contents .glowing-object{    
     left: 100%;
 }
