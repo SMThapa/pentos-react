@@ -7,6 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { Testimonials } from "./components/Testimonials";
 import { Blogs } from "./components/Blogs";
+import Faq from "./components/Faq";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -323,80 +324,12 @@ export const Home = () => {
         <div className="faq-section">
             <div className="title">Frequently Asked Questions</div>
             <div className="description">Got Questions? We've Got Answers.</div>
-
-            <div className="accordion">
-                <div className="accordion-item" data-aos="fade-right" data-aos-delay="50" data-aos-offset="100">
-                  <button id="accordion-button-2" aria-expanded="false">
-                    <span className="accordion-title">1. What is the flight time of your RC planes?</span>
-                    <img src="/top-right.png" alt="arrow"/>
-                  </button>
-                  <div className="accordion-content">
-                    <p>
-                        Our RC planes offer an average flight time of 15–25 minutes per charge, depending on the model and flying conditions. Extra batteries are available for extended play.
-                    </p>
-                  </div>
-                </div>
-                <div className="accordion-item" data-aos="fade-right" data-aos-delay="100" data-aos-offset="75">
-                  <button id="accordion-button-3" aria-expanded="false">
-                    <span className="accordion-title">2. Are your RC products suitable for beginners?</span>
-                    <img src="/top-right.png" alt="arrow"/>
-                  </button>
-                  <div className="accordion-content">
-                    <p>
-                        Absolutely! Many of our RC planes, cars, and boats come with beginner-friendly modes, making them easy to control and perfect for first-time users.
-                    </p>
-                  </div>
-                </div>
-                <div className="accordion-item" data-aos="fade-right" data-aos-delay="150" data-aos-offset="50">
-                  <button id="accordion-button-4" aria-expanded="false">
-                    <span className="accordion-title">3. Do the RC vehicles come fully assembled?</span>
-                    <img src="/top-right.png" alt="arrow"/>
-                  </button>
-                  <div className="accordion-content">
-                    <p>
-                        Yes! All our RC products come ready to run or fly right out of the box. Just charge the battery, follow the quick-start guide, and you’re good to go.
-                    </p>
-                  </div>
-                </div>
-                <div className="accordion-item" data-aos="fade-right" data-aos-delay="200" data-aos-offset="0">
-                  <button id="accordion-button-5" aria-expanded="false">
-                    <span className="accordion-title">4. What is your return or warranty policy?</span>
-                    <img src="/top-right.png" alt="arrow"/>
-                  </button>
-                  <div className="accordion-content">
-                    <p>
-                        We offer a 30-day return policy and a limited warranty on all products. If you encounter a defect or issue, contact our support team for assistance.
-                    </p>
-                  </div>
-                </div>
-                <div className="accordion-item" data-aos="fade-right" data-aos-delay="250" data-aos-offset="0">
-                    <button id="accordion-button-1" aria-expanded="false">
-                      <span className="accordion-title">5. Can I buy spare parts or batteries separately?</span>
-                      <img src="/top-right.png" alt="arrow"/>
-                    </button>
-                    <div className="accordion-content">
-                      <p>
-                        Yes, we offer a full range of replacement parts, accessories, and extra batteries for all our models. Check our shop or contact us for specific requests.
-                      </p>
-                    </div>
-                </div>
-                <div className="accordion-item" data-aos="fade-right" data-aos-delay="250" data-aos-offset="0">
-                    <button id="accordion-button-1" aria-expanded="false">
-                      <span className="accordion-title">6. When will the product launch?</span>
-                      <img src="/top-right.png" alt="arrow"/>
-                    </button>
-                    <div className="accordion-content">
-                      <p>
-                        We are currently in the R&D and testing phase. The official launch is just a few months away! Stay tuned for weekly updates and behind-the-scenes progress.
-                      </p>
-                    </div>
-                </div>
-            </div>   
+            <Faq/>
         </div>
     </section>
 
     <section id="blogs">
-        <Blogs title={'Blog & Articles'} description={'Latest Articles'}/>
+      <Blogs title={''} description={'Blog & Articles'}/>
     </section>
 
     </Fragment>

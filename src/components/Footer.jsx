@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -13,11 +13,8 @@ export const Footer = () => {
                   creativity, precision, and
                   unstoppable passion.
               </p>
-              <div className="social-media">
-                  <a href="#"><img src="/assets/facebook.png" alt="icon"/></a>
-                  <a href="#"><img src="/assets/whatsapp.png" alt="icon"/></a>
-                  <a href="#"><img src="/assets/instagram.png" alt="icon"/></a>
-                  <a href="#"><img src="/assets/youtube.png" alt="icon"/></a>
+              <div className="social-media">                  
+                  <Link to="https://www.instagram.com/xyonica_hobby?igsh=MTk4anpiYXEzdWZvYg==" target="__blank"><img src="/instagram.png" alt="icon"/></Link>                  
               </div>
           </div>            
           <div className="footer-row">
@@ -43,8 +40,8 @@ export const Footer = () => {
               <div className="footer-title">Contact Us</div>
               <ul>
                   <li><a href="" target="_blank">Address: Tollygunge, Kolkata - 700093 </a></li>
-                  <li><a href="mailto:support@xyonica.com" target="_blank">Email: support@xyonica.com</a></li>
-                  <li><a href="" target="_blank">Whatsapp: 123456789</a></li>
+                  <li><Link to="mailto:support@xyonica.com" target="_blank">Email: support@xyonica.com</Link></li>
+                  <li><Link to="https://wa.me/9163110743" target="_blank">Whatsapp: 9163110743</Link></li>
               </ul>
           </div>
       </div>
