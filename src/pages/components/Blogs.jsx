@@ -74,7 +74,7 @@ export const Blogs = ({title, description}) => {
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
-        slidesPerView={1}        
+        slidesPerView={3}        
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -89,7 +89,8 @@ export const Blogs = ({title, description}) => {
         autoplay={{ delay: 4000 }}
         loop
         breakpoints={{
-          640: { slidesPerView: 2 },
+          0: { slidesPerView: 1 },
+          640: { slidesPerView: 1 },
           1024: { slidesPerView: 3 },
         }}
         className="blog-slider"

@@ -251,20 +251,20 @@ export const Home = () => {
                         to elevate your experience and keep the adrenaline high.
                       </p>
                     </div>
-                    <ul class="drone-features">
+                    <ul className="drone-features">
                       <li>Quick-swap batteries for continuous play</li>
                       <li>Custom flight control tuning</li>
                       <li>Future-ready upgrade system</li>
                       <li>Impact-resistant polycarbonate frame</li>
                       <li>Low-latency HD FPV transmission</li>
                     </ul>
-                    <p class="drone-tagline">
+                    <p className="drone-tagline">
                       The Xyonica Multiplayer Drone is built to <strong>fly harder</strong>, 
                       <strong>play smarter</strong>, and keep you in the game longer.
                     </p>
-                    <div class="drone-cta">
-                      <a href="#" class="drone-button">Join the Battle</a>
-                      <a href="#" class="drone-button secondary">Tech Specs</a>
+                    <div className="drone-cta">
+                      <a href="#" className="drone-button">Join the Battle</a>
+                      <a href="#" className="drone-button secondary">Tech Specs</a>
                     </div>
                     <div className="glowing-object"></div>
                 </div>      
@@ -329,7 +329,7 @@ export const Home = () => {
     </section>
 
     <section id="blogs">
-      <Blogs title={''} description={'Blog & Articles'}/>
+      <Blogs title={'Explore'} description={'Blog & Articles'}/>
     </section>
 
     </Fragment>

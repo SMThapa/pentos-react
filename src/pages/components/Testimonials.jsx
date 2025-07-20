@@ -67,9 +67,13 @@ export const Testimonials = () => {
       <div className="title">Testimonials</div>
       <div className="description">What our clients say</div>
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={30}      
-        loop={testimonials.length >= 3}        
+        loop={testimonials.length >= 3} 
+        breakpoints={{
+          640: { slidesPerView: 1 },
+          1024: { slidesPerView: 3 },
+        }}       
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,

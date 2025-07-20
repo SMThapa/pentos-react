@@ -22,6 +22,15 @@ export const Header = () => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
+    const [openMenu, setOpenMenu] = useState(false);
+    const handleHamburgerMenu = () =>{
+        if(openMenu){
+            setOpenMenu(false)
+        }else(
+            setOpenMenu(true)
+        )        
+    }
+
     return (
         <nav className={isScrolled ? "scrolled" : ""}>
             <div className="navigation">
@@ -30,7 +39,7 @@ export const Header = () => {
                         <img src="/logo/logo_big.png" alt=""/>
                     </div>
                 </Link>
-                <div className="menu-list">
+                <div className={`menu-list ${openMenu ? 'menu-list-open' : '' }`}>
                     <NavLink to="/">Home</NavLink>
 
                     <div className="dropdown">
@@ -47,9 +56,10 @@ export const Header = () => {
                     <NavLink to="/services">Services</NavLink>
                     <NavLink to="/blogs">Explore</NavLink>
                     <NavLink to="/about">About Us</NavLink>
+                    <NavLink to="/contact" className={'get-in-touch'}>Get In Touch</NavLink>
                 </div>
                 <div className="action-buttons">
-                    <Link to="/contact">
+                    <Link to="/contact" className="contact-btn">
                         <button className="btn-2">Get In Touch
                             <span>
                                 <img src="/up-right-arrow2.png" alt="icon" className="first"/>
@@ -57,6 +67,9 @@ export const Header = () => {
                             </span>
                         </button>
                     </Link>
+                    <div className={`menu-btn-1 ${openMenu ? 'active' : '' }`} onClick={handleHamburgerMenu}>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </nav>

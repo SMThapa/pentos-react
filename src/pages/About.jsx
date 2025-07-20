@@ -5,13 +5,18 @@ export const About = () => {
   <section>
     <div className="page-services page-width page-about">
       <div className="service-banner">
-        <h1 className="banner-title">Advanced Prototyping & <br/>Product Design</h1>
-        <div className="banner-description">From concept to production - we provide industrial-grade manufacturing solutions and engineering expertise to bring your ideas to life.</div>
-        <div className="btn-2">Get Your Free Quote Today
-            <span>
-                <img src="/up-right-arrow2.png" alt="icon" className="first" />
-                <img src="/up-right-arrow2.png" alt="icon" className="second" />
-            </span>
+        <h1 className="banner-title">
+          About Us & <br />Our Journey
+        </h1>
+        <div className="banner-description">
+          Discover who we are, what drives us, and how we’ve helped businesses innovate with our expertise and passion for excellence.
+        </div>
+        <div className="btn-2">
+          Learn More About Us
+          <span>
+            <img src="/up-right-arrow2.png" alt="icon" className="first" />
+            <img src="/up-right-arrow2.png" alt="icon" className="second" />
+          </span>
         </div>
       </div>
 
