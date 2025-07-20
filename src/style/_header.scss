@@ -21,7 +21,7 @@ nav {
     position: relative;
 
     @media (width > 1100px){
-        display: none;
+      display: none;
     }
 
     span {
@@ -101,7 +101,7 @@ nav {
     justify-content: space-between;
     position: relative;
 
-    a {
+    a, p {
       font-size: 18px;
       text-transform: capitalize;
       padding: 0 18px 12px;
@@ -181,8 +181,8 @@ nav {
           left: 0;
         }
 
-        a, .dropdown{
-          padding-bottom: 45px;
+        a, .dropdown{          
+          margin-bottom: 25px;
         }
       }
   }
@@ -230,9 +230,26 @@ nav {
     }
   }
 
-  .dropdown:hover .dropdown-content {
-    opacity: 1;
-    pointer-events: initial;
+  @media (width > 1100px){
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      pointer-events: initial;
+    }    
+    .dropdown .product-mobile{
+      display: none;
+    }
+  }
+  @media (width < 1100px){
+    .dropdown .dropdown-content{
+      transition: all .3s ease;
+    }
+    .dropdown.open-dropdown .dropdown-content{
+      opacity: 1;
+      pointer-events: initial; 
+    } 
+    .dropdown .product-desktop{
+      display: none;
+    }   
   }
 }
 

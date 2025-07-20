@@ -31,6 +31,8 @@ export const Header = () => {
         )        
     }
 
+    const [openDropDown, setOpenDropDown] = useState(false);
+
     return (
         <nav className={isScrolled ? "scrolled" : ""}>
             <div className="navigation">
@@ -42,8 +44,9 @@ export const Header = () => {
                 <div className={`menu-list ${openMenu ? 'menu-list-open' : '' }`}>
                     <NavLink to="/">Home</NavLink>
 
-                    <div className="dropdown">
-                        <NavLink to="/product">Products <img src="/down.png" alt="icon"/></NavLink>
+                    <div className={`dropdown ${openDropDown ? 'open-dropdown' : ''}`}>
+                        <NavLink className={'product-desktop'} to="/product">Products <img src="/down.png" alt="icon"/></NavLink>
+                        <p className={'product-mobile'} onClick={()=>setOpenDropDown(!openDropDown)}>Products <img src="/down.png" alt="icon"/></p>
                         <div className="dropdown-content">
                             <Link to="/pages/product/uavs">UAVs <img src="/drone.png" alt="icon" loading="lazy" /></Link>
                             <Link to="/pages/product/cars">cars <img src="/car.png" alt="icon" loading="lazy"/></Link>
