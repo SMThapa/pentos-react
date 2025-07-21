@@ -149,6 +149,10 @@ a{
     column-gap: 8px;
     border-radius: 12px;
     white-space: nowrap;
+
+    @media (width < 800px){
+        font-size: 1rem;
+    }
 }
 .btn-2:hover{
     background-color: white;
@@ -603,6 +607,12 @@ section .about-contents .achivements .gap{
     height: 100%;
     width: 100%;
 }
+.blogs-section {
+    .btn-1{
+        margin: 65px auto 0;
+        display: block;
+    }
+}
 .blogs-section  .blog-card{
     min-height: 450px;
     height: 100%;
@@ -712,6 +722,12 @@ section .about-contents .achivements .gap{
     width: 100%;
     margin: 0 auto;    
     padding: 180px 25px 80px;
+    @media (width < 800px){
+        padding: 100px 20px 80px;
+        .title{
+            font-size: 2rem;
+        }
+    }
 }
 form .form-group{
     margin-bottom: 35px;

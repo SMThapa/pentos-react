@@ -29,19 +29,19 @@ export const Contact = () => {
 
                 <form action="">
                     <div className="form-group">
-                        <label for="name">Name</label>
+                        <label htmlFor="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Enter your name."  autocomplete="off" />
                     </div> 
                     <div className="form-group">
-                        <label for="email">Email</label>
+                        <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Enter your email."  autocomplete="off" />
                     </div> 
                     <div className="form-group">
-                        <label for="phone">Phone</label>
+                        <label htmlFor="phone">Phone</label>
                         <input type="number" id="phone" name="phone" placeholder="Enter you phone."  autocomplete="off" />
                     </div> 
                     <div className="form-group">
-                        <label for="phone">Message</label>
+                        <label htmlFor="phone">Message</label>
                         <textarea name="message" id="message" placeholder="Say what's in your mind."></textarea>
                     </div> 
                     <button className="btn-2" type="submit">Submit 

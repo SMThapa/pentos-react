@@ -13,7 +13,7 @@ export const Blog = () => {
                             View <img src="/top-right.png" alt="icon" />
                         </Link>
                         <div className="tags">
-                            <span>``
+                            <span>
                                 <img src="/supermarket.png" alt="icon" />
                                 Business
                             </span>

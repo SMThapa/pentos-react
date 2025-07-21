@@ -17,11 +17,9 @@ export const Header = () => {
         window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-    
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
+        
 
+    const [openDropDown, setOpenDropDown] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
     const handleHamburgerMenu = () =>{
         if(openMenu){
@@ -31,7 +29,12 @@ export const Header = () => {
         )        
     }
 
-    const [openDropDown, setOpenDropDown] = useState(false);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        setOpenDropDown(false);
+        setOpenMenu(false)
+    }, [pathname]);
+    
 
     return (
         <nav className={isScrolled ? "scrolled" : ""}>
