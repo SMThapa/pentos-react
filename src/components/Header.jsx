@@ -29,12 +29,12 @@ export const Header = () => {
         )        
     }
 
+
     useEffect(() => {
         window.scrollTo(0, 0);
         setOpenDropDown(false);
         setOpenMenu(false)
     }, [pathname]);
-    
 
     return (
         <nav className={isScrolled ? "scrolled" : ""}>
@@ -58,7 +58,8 @@ export const Header = () => {
                         </div>
                     </div>
 
-                    <NavLink to="/accesories">Accessories</NavLink>
+                    {/* <NavLink to="/accesories">Accessories</NavLink> */}
+                    <NavLink to="/product">Accessories</NavLink>
                     <NavLink to="/services">Services</NavLink>
                     <NavLink to="/blogs">Explore</NavLink>
                     <NavLink to="/about">About Us</NavLink>

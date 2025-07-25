@@ -1,6 +1,27 @@
-import { Link } from "react-router-dom"
+import axios from "axios";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const ProductListing = () => {
+
+    useEffect(()=>{
+        async function  getProducts(){
+            try{
+                const res = await axios.get('https://xyonica.ct.ws/admin/products/api.php', {
+                    headers: {
+                        'Cookie': '__test=your_cookie_value_here'
+                    },
+                    withCredentials: true // optional: include if the server requires session cookies
+                });
+                console.log(res)
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+        getProducts()
+    }, [])
+
   return (
         <section>
         <div className="page-products page-width">

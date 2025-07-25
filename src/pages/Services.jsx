@@ -1,6 +1,48 @@
-import React from 'react'
+import axios from "axios";
+import { useState } from "react"
 
 export const Services = () => {
+
+    const [btnLoad, setBtnLoad] = useState(false);
+
+    const [formData, setFormData] = useState({
+        file: '',
+        email: '',
+        phone: '',        
+        message: '',  
+    })
+    const handleChange = (e) =>{
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
+    const handleSubmit = (e)=>{
+        setBtnLoad(true)
+        e.preventDefault();        
+        console.log(formData);
+
+        async function submitData(){
+            try{
+                const res = await axios.post('https://xyonica.ct.ws/admin/services/post.php',
+                    formData,
+                    {
+                        headers: {                            
+                            'Content-Type': `application/x-www-form-urlencoded`,
+                        }
+                    }
+                )
+                console.log(res)
+            }catch(err){
+                console.log(err)
+            }finally{
+                setBtnLoad(false)
+            }
+        }
+
+        submitData()
+    }
+
   return (
     <section>        
         <div className="page-services page-width">
@@ -18,29 +60,48 @@ export const Services = () => {
 
             <div className="services-contents">
                 <div className="left-content">
-                    <form action="">
+                    <div className="title2">Let's Connect</div>
+                    <form onSubmit={(e)=>handleSubmit(e)}>
                         <div className="form-group">
                             <label htmlFor="file">Upload File</label>
-                            <input type="file" id="file" name="file" placeholder="Enter your name."  autoComplete="off" />
+                            <input 
+                                type="file" id="file" name="file" placeholder="Enter your name."  autoComplete="off" 
+                                onChange={e=>handleChange(e)} value={formData.file}
+                            />
                         </div> 
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email."  autoComplete="off" />
+                            <input 
+                                type="email" id="email" name="email" placeholder="Enter your email."  autoComplete="off" 
+                                onChange={e=>handleChange(e)} value={formData.email}
+                            />
                         </div> 
                         <div className="form-group">
                             <label htmlFor="phone">Phone</label>
-                            <input type="number" id="phone" name="phone" placeholder="Enter you phone."  autoComplete="off" />
+                            <input 
+                                type="number" id="phone" name="phone" placeholder="Enter you phone."  autoComplete="off" 
+                                onChange={e=>handleChange(e)} value={formData.phone}
+                            />
                         </div> 
                         <div className="form-group">
                             <label htmlFor="phone">Message</label>
-                            <textarea name="message" id="message" placeholder="Say what's in your mind."></textarea>
+                            <textarea 
+                                name="message" id="message" placeholder="Say what's in your mind."
+                                onChange={e=>handleChange(e)} value={formData.message}
+                            ></textarea>
                         </div> 
-                        <button className="btn-2" type="submit">Submit 
-                            <span>
-                                <img src="/up-right-arrow2.png" alt="icon" className="first" />
-                                <img src="/up-right-arrow2.png" alt="icon" className="second" />
-                            </span>
-                        </button>
+                        <button className="btn-2" type="submit" disabled={btnLoad}>                                                
+                            {
+                                btnLoad ? <span className='btn-loader'></span>:
+                                <>
+                                    Submit 
+                                    <span>
+                                        <img src="/up-right-arrow2.png" alt="icon" className="first" />
+                                        <img src="/up-right-arrow2.png" alt="icon" className="second" />
+                                    </span>
+                                </>
+                            }
+                        </button> 
                     </form>
                 </div>
                 <div className="right-content">

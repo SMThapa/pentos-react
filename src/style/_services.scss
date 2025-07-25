@@ -33,8 +33,19 @@
       width: 60%;
       padding: 45px 0;
 
+    .title2{
+        text-align: left;
+        width: fit-content;
+        margin-bottom: 55px;
+        display: none;
+    }
+
       @media (width < 800px){
         width: calc(100% - 10px);
+
+        .title2{
+            display: block;
+        }
       }
     }
 
