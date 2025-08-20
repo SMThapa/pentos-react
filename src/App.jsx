@@ -66,7 +66,7 @@ function App() {
         style={{background: `conic-gradient(#5AEF90 ${scrollPercent}%, #000 ${scrollPercent}%)`}}
       >
         <span>
-          <img src="/public/right.png" alt="" />
+          <img src="/right.png" alt="" />
         </span>
       </div>
     <Footer/> 
