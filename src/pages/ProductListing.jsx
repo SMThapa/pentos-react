@@ -14,8 +14,7 @@ export const ProductListing = () => {
             try{
                 const res = await axios.get(`${url}/products/api.php`)
                 setProducts(res.data) 
-                setNewProducts(pageTitle == 'all products' ? res.data : res.data.filter(obj=>obj.category.toLowerCase() == pageTitle))                               
-                console.log(pageTitle == 'all products' ? res.data : res.data.filter(obj=>obj.category.toLowerCase() == pageTitle))
+                setNewProducts(pageTitle == 'all products' ? res.data : res.data.filter(obj=>obj.category.toLowerCase() == pageTitle))                                               
 
             }catch(err){
                 console.log(err)
@@ -25,8 +24,7 @@ export const ProductListing = () => {
         if(products.length == 0){
             getProducts()
         }else{
-            setNewProducts(products.filter(obj=>obj.category.toLowerCase() == pageTitle))
-            console.log(products.filter(obj=>obj.category.toLowerCase() == pageTitle));
+            setNewProducts(products.filter(obj=>obj.category.toLowerCase() == pageTitle))            
         }
     }, [pageTitle])    
 

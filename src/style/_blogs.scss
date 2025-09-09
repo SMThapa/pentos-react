@@ -57,6 +57,11 @@
     .blog-title {
       font-size: 3rem;
       color: var(--primary-color);
+      p{
+        font-size: 3rem;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
     }
 
     hr {

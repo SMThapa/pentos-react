@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -6,55 +6,55 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useFormattedDate } from "../../hooks/useFormattedDate";
 
-const blogPosts = [
-  {
-    title: "Top 5 Tips for First-Time RC Pilots.",
-    date: "Oct 25, 2024",
-    category: "Business",
-    image: "/blog/rc-plane.jpg",
-    link: "/blogs/1",
-  },
-  {
-    title: "RC Cars vs. RC Trucks: Which One's Right for You?",
-    date: "Oct 25, 2024",
-    category: "Business",
-    image: "/assets/blog/truck.jpg",
-    link: "/blogs/1",
-  },
-  {
-    title: "How to Maximize Battery Life in Your RC Toys.",
-    date: "Oct 25, 2024",
-    category: "Business",
-    image: "/blog/battery.jpg",
-    link: "/blogs/1",
-  },
-  {
-    title: "Top 5 Tips for First-Time RC Pilots.",
-    date: "Oct 25, 2024",
-    category: "Business",
-    image: "/blog/rc-plane.jpg",
-    link: "/blogs/1",
-  },
-  {
-    title: "RC Cars vs. RC Trucks: Which One's Right for You?",
-    date: "Oct 25, 2024",
-    category: "Business",
-    image: "/assets/blog/truck.jpg",
-    link: "/blogs/1",
-  },
-  {
-    title: "How to Maximize Battery Life in Your RC Toys.",
-    date: "Oct 25, 2024",
-    category: "Business",
-    image: "/blog/battery.jpg",
-    link: "/blogs/1",
-  },
-];
+
+const BlogCard = ({ item }) => {
+  const formattedDate = useFormattedDate(item.created_at);
+
+  return (
+    <div className="blog-card">
+      <Link to={`/blogs/${item.id}`} className="center-btn">
+        View <img src='/top-right.png' alt="icon" />
+      </Link>
+      <div className="tags">
+        <span>
+          <img src="/supermarket.png" alt="icon" />
+          Business
+        </span>
+        <span>
+          <img src="/calendar.png" alt="calendar" />
+          {formattedDate}
+        </span>
+      </div>
+      <div
+        className="card-title"
+        dangerouslySetInnerHTML={{ __html: item.short_description }}
+      />
+      <img src={item.banner_image} alt={item.title || "blog image"} />
+    </div>
+  );
+};
 
 export const Blogs = ({title, description}) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const url = import.meta.env.VITE_API_BASEURL;
+  const [blogPosts, setBlogs] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await axios.get(url + "/blogs/api.php");        
+        setBlogs(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchData();
+  }, [url]);
 
   return (
     <div className="blogs-section">
@@ -87,7 +87,7 @@ export const Blogs = ({title, description}) => {
           swiper.navigation.update();
         }}
         autoplay={{ delay: 4000 }}
-        loop
+        loop={blogPosts?.length > 4}
         breakpoints={{
           0: { slidesPerView: 1 },
           640: { slidesPerView: 1 },
@@ -97,23 +97,7 @@ export const Blogs = ({title, description}) => {
       >
         {blogPosts.map((post, index) => (
           <SwiperSlide key={index}>
-            <div className="blog-card">
-              <Link to={post.link} className="center-btn">
-                View <img src="/top-right.png" alt="icon" />
-              </Link>
-              <div className="tags">
-                <span>
-                  <img src="/supermarket.png" alt="icon" />
-                  {post.category}
-                </span>
-                <span>
-                  <img src="/calendar.png" alt="icon" />
-                  {post.date}
-                </span>
-              </div>
-              <div className="card-title">{post.title}</div>
-              <img src={post.image} alt="blog" />
-            </div>
+            <BlogCard key={index} item={post} />
           </SwiperSlide>
         ))}
       </Swiper>

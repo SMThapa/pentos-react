@@ -20,6 +20,8 @@ export const Services = () => {
             [e.target.name]: e.target.value
         })
     }
+
+    const url = import.meta.env.VITE_API_BASEURL;
     const handleSubmit = (e)=>{
         setBtnLoad(true)
         e.preventDefault();        
@@ -27,7 +29,7 @@ export const Services = () => {
 
         async function submitData(){
             try{
-                const res = await axios.post('https://xyonica.ct.ws/admin/services/post.php',
+                const res = await axios.post(url + '/services/post.php',
                     formData,
                     {
                         headers: {                            

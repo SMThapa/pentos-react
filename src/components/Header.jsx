@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 
+
 export const Header = () => {
 
     const [isScrolled, setIsScrolled] = useState(false);
@@ -14,7 +15,7 @@ export const Header = () => {
 
         // Cleanup on unmount
         return () => {
-        window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
         
@@ -31,7 +32,7 @@ export const Header = () => {
 
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0);        
         setOpenDropDown(false);
         setOpenMenu(false)
     }, [pathname]);
