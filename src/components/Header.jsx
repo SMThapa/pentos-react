@@ -30,12 +30,18 @@ export const Header = () => {
         )        
     }
 
-
     useEffect(() => {
         window.scrollTo(0, 0);        
         setOpenDropDown(false);
         setOpenMenu(false)
     }, [pathname]);
+
+
+    const handleProductClick = () =>{
+        setOpenDropDown(false);
+        setOpenMenu(false)
+    }
+
 
     return (
         <nav className={isScrolled ? "scrolled" : ""}>
@@ -52,10 +58,10 @@ export const Header = () => {
                         <NavLink className={'product-desktop'} state={{ type: "all products" }} to="/product">Products <img src="/down.png" alt="icon"/></NavLink>
                         <p className={'product-mobile'} onClick={()=>setOpenDropDown(!openDropDown)}>Products <img src="/down.png" alt="icon"/></p>
                         <div className="dropdown-content">
-                            <Link to="/product" state={{ type: "plane" }}>planes <img src="/drone.png" alt="icon" loading="lazy" /></Link>
-                            <Link to="/product" state={{ type: "car" }}>cars <img src="/car.png" alt="icon" loading="lazy"/></Link>
-                            <Link to="/product" state={{ type: "boat" }}>boats <img src="/boat.png" alt="icon" loading="lazy"/></Link>
-                            <Link to="/product" state={{ type: "accessories" }}>accessories <img src="/others.png" alt="icon" loading="lazy"/></Link>
+                            <Link to="/product" state={{ type: "plane" }} onClick={handleProductClick}>planes <img src="/drone.png" alt="icon" loading="lazy" /></Link>
+                            <Link to="/product" state={{ type: "car" }} onClick={handleProductClick}>cars <img src="/car.png" alt="icon" loading="lazy"/></Link>
+                            <Link to="/product" state={{ type: "boat" }} onClick={handleProductClick}>boats <img src="/boat.png" alt="icon" loading="lazy"/></Link>
+                            <Link to="/product" state={{ type: "accessories" }} onClick={handleProductClick}>accessories <img src="/others.png" alt="icon" loading="lazy"/></Link>
                         </div>
                     </div>                   
                     <NavLink to="/services">Services</NavLink>
