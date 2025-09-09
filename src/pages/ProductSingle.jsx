@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -7,13 +7,33 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import axios from 'axios';
 
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { Link, useParams } from 'react-router-dom';
 
 export const ProductSingle = () => {
+  const url = import.meta.env.VITE_API_BASEURL; 
+  const [theProdct, setProduct] = useState({})
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  
+  const {prod}= useParams()
+  useEffect(()=>{
+    async function getProducts(){
+      try{
+        const res = await axios.get(`${url}/products/api.php`)                                
+        console.log(res.data.filter(obj=>obj.model_number== prod)[0])
+        setProduct(res.data.filter(obj=>obj.model_number== prod)[0])
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+    getProducts()
+  },[prod])
 
   const images = [
     "/products/BMW M3 GTR.785.jpg",
@@ -41,7 +61,7 @@ export const ProductSingle = () => {
               modules={[FreeMode, Navigation, Thumbs]}
               className="mySwiper2"
             >
-              {images.map((src, index) => (
+              {theProdct?.images?.map((src, index) => (
                 <SwiperSlide key={index}>
                   <img
                     src={src}
@@ -77,7 +97,7 @@ export const ProductSingle = () => {
               modules={[FreeMode, Navigation, Thumbs]}
               className="mySwiper"
             >
-              {images.map((src, index) => (
+              {theProdct?.images?.map((src, index) => (
                 <SwiperSlide key={index}>
                   <img
                     src={src}
@@ -89,48 +109,35 @@ export const ProductSingle = () => {
             </Swiper>
           </div>
           <div className="section-right">
-            <h2 className="proudct-title">Product Title</h2>
+            <h2 className="proudct-title">{theProdct.name}</h2>
             <div className="model-no">
-              <span>Model No:</span> KB2911002-MBK
+              <span>Model No:</span> {theProdct.model_number}
             </div>
-            <div className="product-price">
+            {/* <div className="product-price">
               <span>Price:</span> Rs. 12,000/-
-            </div>
-            <div className="btn-2">
-              Enquire Now
-              <span>
-                <img
-                  src="/up-right-arrow2.png"
-                  alt="icon"
-                  className="first"
-                />
-                <img
-                  src="/up-right-arrow2.png"
-                  alt="icon"
-                  className="second"
-                />
-              </span>
-            </div>
+            </div> */}
+            <Link to='/services' state={{prod}}>
+              <div className="btn-2">
+                Enquire Now
+                <span>
+                  <img
+                    src="/up-right-arrow2.png"
+                    alt="icon"
+                    className="first"
+                  />
+                  <img
+                    src="/up-right-arrow2.png"
+                    alt="icon"
+                    className="second"
+                  />
+                </span>
+              </div>
+            </Link>
             <div className="product-description">
               <p>
                 <span>Product Details:</span>
               </p>
-              <p>
-                Hay muchas variaciones de los pasajes de Lorem Ipsum
-                disponibles, pero la mayoría sufrió alteraciones en
-                alguna manera, ya sea porque se le agregó humor, o
-                palabras aleatorias.
-              </p>
-              <p>
-                Todos los generadores de Lorem Ipsum que se encuentran
-                en Internet tienden a repetir trozos predefinidos
-                cuando sea necesario.
-              </p>
-              <p>
-                Este Lorem Ipsum generado siempre estará libre de
-                repeticiones, humor agregado o palabras no
-                características del lenguaje.
-              </p>
+              <div className="card-description" dangerouslySetInnerHTML={{__html: theProdct.description}} />                                
             </div>
           </div>
         </div>

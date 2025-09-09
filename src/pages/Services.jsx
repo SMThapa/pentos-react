@@ -1,15 +1,18 @@
 import axios from "axios";
 import { useState } from "react"
+import { useLocation } from "react-router-dom";
 
 export const Services = () => {
 
     const [btnLoad, setBtnLoad] = useState(false);
+    const location = useLocation();  
+    const defaultMessage = location.state?.prod ? `About the product ${location.state?.prod}.` : ''
 
     const [formData, setFormData] = useState({
         file: '',
         email: '',
         phone: '',        
-        message: '',  
+        message: defaultMessage,  
     })
     const handleChange = (e) =>{
         setFormData({

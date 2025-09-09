@@ -1,84 +1,54 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export const ProductListing = () => {
 
+    const url = import.meta.env.VITE_API_BASEURL;
+    const [products, setProducts] = useState([]);
+    const [newProducts, setNewProducts] = useState([])
+    const location = useLocation()
+    const pageTitle = location.state?.type || 'all products'      
     useEffect(()=>{
-        async function  getProducts(){
+        async function getProducts(){
             try{
-                const res = await axios.get('https://xyonica.ct.ws/admin/products/api.php', {
-                    headers: {
-                        'Cookie': '__test=your_cookie_value_here'
-                    },
-                    withCredentials: true // optional: include if the server requires session cookies
-                });
-                console.log(res)
+                const res = await axios.get(`${url}/products/api.php`)
+                setProducts(res.data) 
+                setNewProducts(pageTitle == 'all products' ? res.data : res.data.filter(obj=>obj.category.toLowerCase() == pageTitle))                               
+                console.log(pageTitle == 'all products' ? res.data : res.data.filter(obj=>obj.category.toLowerCase() == pageTitle))
+
             }catch(err){
                 console.log(err)
             }
         }
 
-        getProducts()
-    }, [])
+        if(products.length == 0){
+            getProducts()
+        }else{
+            setNewProducts(products.filter(obj=>obj.category.toLowerCase() == pageTitle))
+            console.log(products.filter(obj=>obj.category.toLowerCase() == pageTitle));
+        }
+    }, [pageTitle])    
 
   return (
         <section>
         <div className="page-products page-width">
-            <div className="title">Products</div>
+            <div className="title">{pageTitle}</div>
             <div className="product-contents">
-                <Link to="/product/1">
-                    <div className="product-card">
-                        <img src=" /products/BMW M3 GTR.785.jpg" alt="img" />
-                        <div className="card-title">Product 1</div>
-                        <p className="card-description">It's also the name of a company, Laurem Limited, which was dissolved in 2017. Additionally, there's a Laurem Care Group Limited, a private company focused on residential care for the elderly and disabled.</p>
-                    </div>
-                </Link>
-                <Link to="/product/1">
-                    <div className="product-card">
-                        <img src=" /products/BMW M3 GTR.787.jpg" alt="img" />
-                        <div className="card-title">Product 2</div>
-                        <p className="card-description">It's also the name of a company, Laurem Limited, which was dissolved in 2017. Additionally, there's a Laurem Care Group Limited, a private company focused on residential care for the elderly and disabled.</p>
-                    </div>
-                </Link>
 
-                <Link to="/product/1">
-                    <div className="product-card">
-                        <img src=" /products/BMW M3 GTRR.jpg" alt="img" />
-                        <div className="card-title">Product 3</div>
-                        <p className="card-description">It's also the name of a company, Laurem Limited, which was dissolved in 2017. Additionally, there's a Laurem Care Group Limited, a private company focused on residential care for the elderly and disabled.</p>
-                    </div>
-                </Link>
-
-                <Link to="/product/1">
-                    <div className="product-card">
-                        <img src=" /products/bmw-1.jpg" alt="img" />
-                        <div className="card-title">Product 4</div>
-                        <p className="card-description">It's also the name of a company, Laurem Limited, which was dissolved in 2017. Additionally, there's a Laurem Care Group Limited, a private company focused on residential care for the elderly and disabled.</p>
-                    </div>
-                </Link>
-                
-
-                <div className="product-card">
-                    <img src=" /products/BMW M3 GTR.785.jpg" alt="img" />
-                    <div className="card-title">Product 5</div>
-                    <p className="card-description">It's also the name of a company, Laurem Limited, which was dissolved in 2017. Additionally, there's a Laurem Care Group Limited, a private company focused on residential care for the elderly and disabled.</p>
-                </div>
-                <div className="product-card">
-                    <img src=" /products/BMW M3 GTR.787.jpg" alt="img" />
-                    <div className="card-title">Product 6</div>
-                    <p className="card-description">It's also the name of a company, Laurem Limited, which was dissolved in 2017. Additionally, there's a Laurem Care Group Limited, a private company focused on residential care for the elderly and disabled.</p>
-                </div>
-                <div className="product-card">
-                    <img src=" /products/BMW M3 GTRR.jpg" alt="img" />
-                    <div className="card-title">Product 7</div>
-                    <p className="card-description">It's also the name of a company, Laurem Limited, which was dissolved in 2017. Additionally, there's a Laurem Care Group Limited, a private company focused on residential care for the elderly and disabled.</p>
-                </div>
-                <div className="product-card">
-                    <img src=" /products/bmw-1.jpg" alt="img" />
-                    <div className="card-title">Product 8</div>
-                    <p className="card-description">It's also the name of a company, Laurem Limited, which was dissolved in 2017. Additionally, there's a Laurem Care Group Limited, a private company focused on residential care for the elderly and disabled.</p>
-                </div>
+                {
+                    newProducts?.map((item, index)=>(
+                        <Link to={`/product-single/${item.model_number}`} key={index}>
+                            <div className="product-card">
+                                <img src={item?.images[0]} alt="img" />
+                                <div className="card-title">{item.name}</div>
+                                <div className="card-tag">{item.category}</div>
+                                <div className="card-description" dangerouslySetInnerHTML={{__html: item.description}} />                                
+                                
+                            </div>
+                        </Link>
+                    ))
+                }                
             </div>
         </div>
     </section>

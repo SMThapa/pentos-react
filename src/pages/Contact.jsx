@@ -24,14 +24,12 @@ export const Contact = () => {
 
         async function submitData(){
             try{
-                const res = await axios.post('https://xyonica.ct.ws/admin/contacts/post.php',
-                    formData,
+                const res = await axios.post('https://xyonica.ct.ws/admin/contacts/post.php', 
+                    formData, 
                     {
-                        headers: {
-                            'Content-Type': `application/x-www-form-urlencoded`,
-                        }
-                    }
-                )
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        withCredentials: true
+                    })
                 console.log(res)
             }catch(err){
                 console.log(err)

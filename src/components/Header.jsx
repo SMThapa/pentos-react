@@ -48,18 +48,15 @@ export const Header = () => {
                     <NavLink to="/">Home</NavLink>
 
                     <div className={`dropdown ${openDropDown ? 'open-dropdown' : ''}`}>
-                        <NavLink className={'product-desktop'} to="/product">Products <img src="/down.png" alt="icon"/></NavLink>
+                        <NavLink className={'product-desktop'} state={{ type: "all products" }} to="/product">Products <img src="/down.png" alt="icon"/></NavLink>
                         <p className={'product-mobile'} onClick={()=>setOpenDropDown(!openDropDown)}>Products <img src="/down.png" alt="icon"/></p>
                         <div className="dropdown-content">
-                            <Link to="/pages/product/uavs">UAVs <img src="/drone.png" alt="icon" loading="lazy" /></Link>
-                            <Link to="/pages/product/cars">cars <img src="/car.png" alt="icon" loading="lazy"/></Link>
-                            <Link to="/pages/product/boats">boats <img src="/boat.png" alt="icon" loading="lazy"/></Link>
-                            <Link to="/pages/product/others">others <img src="/others.png" alt="icon" loading="lazy"/></Link>
+                            <Link to="/product" state={{ type: "plane" }}>planes <img src="/drone.png" alt="icon" loading="lazy" /></Link>
+                            <Link to="/product" state={{ type: "car" }}>cars <img src="/car.png" alt="icon" loading="lazy"/></Link>
+                            <Link to="/product" state={{ type: "boat" }}>boats <img src="/boat.png" alt="icon" loading="lazy"/></Link>
+                            <Link to="/product" state={{ type: "accessories" }}>accessories <img src="/others.png" alt="icon" loading="lazy"/></Link>
                         </div>
-                    </div>
-
-                    {/* <NavLink to="/accesories">Accessories</NavLink> */}
-                    <NavLink to="/product">Accessories</NavLink>
+                    </div>                   
                     <NavLink to="/services">Services</NavLink>
                     <NavLink to="/blogs">Explore</NavLink>
                     <NavLink to="/about">About Us</NavLink>
