@@ -37,6 +37,7 @@ export const ProductListing = () => {
             <div className="product-contents">
 
                 {
+                    newProducts.length != 0 ?
                     newProducts?.map((item, index)=>(
                         <Link to={`/product-single/${item.model_number}`} key={index}>
                             <div className="product-card">
@@ -47,8 +48,13 @@ export const ProductListing = () => {
                                 
                             </div>
                         </Link>
-                    ))
+                    )) :
+                    <div className="fetching-data">
+                        <div className="title">Fetching Data please wait...</div>
+                    </div>
                 }                
+
+
             </div>
         </div>
     </section>
