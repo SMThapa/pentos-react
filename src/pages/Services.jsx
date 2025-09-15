@@ -24,8 +24,7 @@ export const Services = () => {
     const url = import.meta.env.VITE_API_BASEURL;
     const handleSubmit = (e)=>{
         setBtnLoad(true)
-        e.preventDefault();        
-        console.log(formData);
+        e.preventDefault();                
 
         async function submitData(){
             try{
@@ -36,8 +35,7 @@ export const Services = () => {
                             'Content-Type': `application/x-www-form-urlencoded`,
                         }
                     }
-                )
-                console.log(res)
+                )                
             }catch(err){
                 console.log(err)
             }finally{

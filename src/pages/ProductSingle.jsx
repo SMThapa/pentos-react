@@ -24,8 +24,7 @@ export const ProductSingle = () => {
   useEffect(()=>{
     async function getProducts(){
       try{
-        const res = await axios.get(`${url}/products/api.php`)                                
-        console.log(res.data.filter(obj=>obj.model_number== prod)[0])
+        const res = await axios.get(`${url}/products/api.php`)                                        
         setProduct(res.data.filter(obj=>obj.model_number== prod)[0])
       }catch(err){
         console.log(err)
