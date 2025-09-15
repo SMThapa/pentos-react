@@ -54,11 +54,11 @@ export const Contact = () => {
 
                     <div className="info-group">
                         <img src="/phone-receiver-silhouette.png" alt="icon" />
-                        <a href="tel:1234567890">1234567890</a>
+                        <a href="tel:9163110743">+91 9163110743</a>
                     </div>
                     <div className="info-group">
                         <img src="/email.png" alt="icon" />
-                        <a href="mailto:support@xyonica.com" target="__blank">support@xyonica.com</a>
+                        <a href="mailto:connect@xyonica.com" target="__blank">connect@xyonica.com</a>
                     </div>
                     <div className="info-group">
                         <img src="/pin.png" alt="icon" />

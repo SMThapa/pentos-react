@@ -40,8 +40,8 @@ export const Footer = () => {
               <div className="footer-title">Contact Us</div>
               <ul>
                   <li><a href="" target="_blank">Address: Tollygunge, Kolkata - 700093 </a></li>
-                  <li><Link to="mailto:support@xyonica.com" target="_blank">Email: support@xyonica.com</Link></li>
-                  <li><Link to="https://wa.me/9163110743" target="_blank">Whatsapp: 9163110743</Link></li>
+                  <li><Link to="mailto:connect@xyonica.com" target="_blank">Email: connect@xyonica.com</Link></li>
+                  <li><Link to="https://wa.me/9163110743" target="_blank">Whatsapp: +91 9163110743</Link></li>
               </ul>
           </div>
       </div>

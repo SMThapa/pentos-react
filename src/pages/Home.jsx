@@ -8,6 +8,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Testimonials } from "./components/Testimonials";
 import { Blogs } from "./components/Blogs";
 import Faq from "./components/Faq";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,12 +56,30 @@ export const Home = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     rendererRef.current = renderer;
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-    scene.add(ambientLight);
+// Stronger ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(10, 20, 0);
-    scene.add(directionalLight);
+// Hemisphere light for natural sky/ground effect
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+hemiLight.position.set(0, 20, 0);
+scene.add(hemiLight);
+
+// Main directional light (like the sun)
+const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1.2);
+directionalLight1.position.set(10, 20, 10);
+directionalLight1.castShadow = true;
+scene.add(directionalLight1);
+
+// Fill directional light from opposite side
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
+directionalLight2.position.set(-10, 15, -10);
+scene.add(directionalLight2);
+
+// Point light close to the model for extra brightness
+const pointLight = new THREE.PointLight(0xffffff, 0.8, 50);
+pointLight.position.set(0, 5, 5);
+scene.add(pointLight);
 
     const loader = new GLTFLoader();
     const dracoLoader = new DRACOLoader();
@@ -263,8 +282,8 @@ export const Home = () => {
                       <strong>play smarter</strong>, and keep you in the game longer.
                     </p>
                     <div className="drone-cta">
-                      <a href="#" className="drone-button">Join the Battle</a>
-                      <a href="#" className="drone-button secondary">Tech Specs</a>
+                      <Link to="/contact" className="drone-button">Join the Battle</Link>
+                      <Link to="/contact" className="drone-button secondary">Tech Specs</Link>
                     </div>
                     <div className="glowing-object"></div>
                 </div>      
@@ -288,30 +307,38 @@ export const Home = () => {
             <div className="title">Explore Our Range</div>
             <div className="description">Beyond the Skies — Fun on Land, Water, and Air</div>            
             <div className="product-types">
+              <Link to="/product" state={{ type: "plane" }}>
                 <div className="product-card">
-                    <img src="/blog/rc-plane.jpg" alt="icon"/>
-                    <div className="text-contents">
-                        <div className="heading">Plane</div>
-                    </div>
+                  <img src="/blog/rc-plane.jpg" alt="icon"/>
+                  <div className="text-contents">
+                      <div className="heading">Plane</div>
+                  </div>
                 </div>
+              </Link>
+              <Link to="/product" state={{ type: "car" }}>
                 <div className="product-card">
-                    <img src="/blog/truck.jpg" alt="icon"/>
-                    <div className="text-contents">
-                        <div className="heading">Cars</div>
-                    </div>
+                  <img src="/blog/truck.jpg" alt="icon"/>
+                  <div className="text-contents">
+                      <div className="heading">Cars</div>
+                  </div>
                 </div>
+              </Link>
+              <Link to="/product" state={{ type: "boat" }}>
                 <div className="product-card">
-                    <img src="/blog/boat.jpg" alt="icon"/>
-                    <div className="text-contents">
-                        <div className="heading">Boats</div>
-                    </div>
+                  <img src="/blog/boat.jpg" alt="icon"/>
+                  <div className="text-contents">
+                      <div className="heading">Boats</div>
+                  </div>
                 </div>
+              </Link>
+              <Link to="/product" state={{ type: "accessories" }}>
                 <div className="product-card">
-                    <img src="/blog/battery.jpg" alt="icon"/>
-                    <div className="text-contents">
-                        <div className="heading">Accessories</div>
-                    </div>
+                  <img src="/blog/battery.jpg" alt="icon"/>
+                  <div className="text-contents">
+                      <div className="heading">Accessories</div>
+                  </div>
                 </div>
+              </Link>       
             </div>            
         </div>
     </section>

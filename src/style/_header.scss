@@ -1,5 +1,45 @@
 /* navigation */
+.header-marque {
+  height: 30px;
+  background: var(--primary-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  overflow: hidden;
+  .swiper{
+    height: 100%;
+  }
+  .swiper-wrapper{
+    height: 100%;
+    -webkit-transition-timing-function:linear!important;
+    transition-timing-function:linear!important; 
+  }
+  .swiper-slide {
+    width: fit-content;    
+    text-align: center;    
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0 30px;
+    height: 100%;    
+    &:nth-of-type(even){
+      padding: 0 !important;
+    }
+    .dot{      
+      height: 6px;
+      width: 6px;
+      background: #000;
+      align-self: center;
+      border-radius: 50%;
+    }    
+  }
+}
+
 nav {
+  margin-top: 30px;
   width: 100%;
   padding: 0 25px;
   color: white;
