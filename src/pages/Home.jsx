@@ -55,6 +55,15 @@ export const Home = () => {
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     rendererRef.current = renderer;
+    renderer.setPixelRatio(window.devicePixelRatio);
+    // ✅ Force consistent color handling
+    // renderer.outputEncoding = THREE.sRGBEncoding;
+    // renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    // renderer.toneMappingExposure = 1.2;
+
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load("myTexture.jpg");
+    texture.encoding = THREE.sRGBEncoding; // ✅ add this
 
 // Stronger ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
