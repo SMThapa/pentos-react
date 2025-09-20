@@ -73,7 +73,7 @@ export const About = () => {
           <strong>play smarter</strong>, and keep you in the game longer.
         </p>
         <div class="drone-cta">
-          <a href="#" class="drone-button">Join the Battle</a>
+          <a href="/contact" class="drone-button">Join the Battle</a>
           <a href="#" class="drone-button secondary">Tech Specs</a>
         </div>
         <div className="glowing-object"></div>

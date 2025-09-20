@@ -1,113 +1,163 @@
 import axios from "axios";
-import { useState } from "react"
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 export const Services = () => {
+  const [btnLoad, setBtnLoad] = useState(false);
+  const location = useLocation();
+  const defaultMessage = location.state?.prod
+    ? `About the product ${location.state?.prod}.`
+    : "";
 
-    const [btnLoad, setBtnLoad] = useState(false);
-    const location = useLocation();  
-    const defaultMessage = location.state?.prod ? `About the product ${location.state?.prod}.` : ''
+  const [formData, setFormData] = useState({
+    file: null,
+    email: "",
+    phone: "",
+    message: defaultMessage,
+  });
 
-    const [formData, setFormData] = useState({
-        file: '',
-        email: '',
-        phone: '',        
-        message: defaultMessage,  
-    })
-    const handleChange = (e) =>{
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "file") {
+      setFormData({
+        ...formData,
+        file: files[0], // store actual File object
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
     }
+  };
 
-    const url = import.meta.env.VITE_API_BASEURL;
-    const handleSubmit = (e)=>{
-        setBtnLoad(true)
-        e.preventDefault();                
+  const url = import.meta.env.VITE_API_BASEURL;
 
-        async function submitData(){
-            try{
-                const res = await axios.post(url + '/services/post.php',
-                    formData,
-                    {
-                        headers: {                            
-                            'Content-Type': `application/x-www-form-urlencoded`,
-                        }
-                    }
-                )                
-            }catch(err){
-                console.log(err)
-            }finally{
-                setBtnLoad(false)
-            }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setBtnLoad(true);
+
+    async function submitData() {
+      try {
+        const data = new FormData();
+        if (formData.file) {
+          data.append("file", formData.file);
         }
+        data.append("email", formData.email);
+        data.append("phone", formData.phone);
+        data.append("message", formData.message);
 
-        submitData()
+        await axios.post(url + "/services/post.php", data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        alert("Form submitted successfully!");
+      } catch (err) {
+        console.error(err);
+        alert("Something went wrong!");
+      } finally {
+        setBtnLoad(false);
+      }
     }
+
+    submitData();
+  };
 
   return (
-    <section>        
-        <div className="page-services page-width">
-            <div className="service-banner">
-                <h1 className="banner-title">Advanced Prototyping & <br/>Product Design</h1>
-                <div className="banner-description">From concept to production - we provide industrial-grade manufacturing solutions and engineering expertise to bring your ideas to life.</div>
-                <div className="btn-2">Get Your Free Quote Today
-                    <span>
-                        <img src="/up-right-arrow2.png" alt="icon" className="first" />
-                        <img src="/up-right-arrow2.png" alt="icon" className="second" />
-                    </span>
-                </div>
-            </div>
-            <div className="title">What we can do for you</div>
+    <section>
+      <div className="page-services page-width">
+        <div className="service-banner">
+          <h1 className="banner-title">
+            Advanced Prototyping & <br />
+            Product Design
+          </h1>
+          <div className="banner-description">
+            From concept to production - we provide industrial-grade manufacturing
+            solutions and engineering expertise to bring your ideas to life.
+          </div>
+          <div className="btn-2">
+            Get Your Free Quote Today
+            <span>
+              <img src="/up-right-arrow2.png" alt="icon" className="first" />
+              <img src="/up-right-arrow2.png" alt="icon" className="second" />
+            </span>
+          </div>
+        </div>
+        <div className="title">What we can do for you</div>
 
-            <div className="services-contents">
-                <div className="left-content">
-                    <div className="title2">Let's Connect</div>
-                    <form onSubmit={(e)=>handleSubmit(e)}>
-                        <div className="form-group">
-                            <label htmlFor="file">Upload File</label>
-                            <input 
-                                type="file" id="file" name="file" placeholder="Enter your name."  autoComplete="off" 
-                                onChange={e=>handleChange(e)} value={formData.file}
-                            />
-                        </div> 
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input 
-                                type="email" id="email" name="email" placeholder="Enter your email."  autoComplete="off" 
-                                onChange={e=>handleChange(e)} value={formData.email}
-                            />
-                        </div> 
-                        <div className="form-group">
-                            <label htmlFor="phone">Phone</label>
-                            <input 
-                                type="number" id="phone" name="phone" placeholder="Enter you phone."  autoComplete="off" 
-                                onChange={e=>handleChange(e)} value={formData.phone}
-                            />
-                        </div> 
-                        <div className="form-group">
-                            <label htmlFor="phone">Message</label>
-                            <textarea 
-                                name="message" id="message" placeholder="Say what's in your mind."
-                                onChange={e=>handleChange(e)} value={formData.message}
-                            ></textarea>
-                        </div> 
-                        <button className="btn-2" type="submit" disabled={btnLoad}>                                                
-                            {
-                                btnLoad ? <span className='btn-loader'></span>:
-                                <>
-                                    Submit 
-                                    <span>
-                                        <img src="/up-right-arrow2.png" alt="icon" className="first" />
-                                        <img src="/up-right-arrow2.png" alt="icon" className="second" />
-                                    </span>
-                                </>
-                            }
-                        </button> 
-                    </form>
-                </div>
-                <div className="right-content">
+        <div className="services-contents">
+          <div className="left-content">
+            <div className="title2">Let's Connect</div>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="file">Upload File</label>
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email."
+                  autoComplete="off"
+                  onChange={handleChange}
+                  value={formData.email}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="phone">Phone</label>
+                <input
+                  type="number"
+                  id="phone"
+                  name="phone"
+                  placeholder="Enter your phone."
+                  autoComplete="off"
+                  onChange={handleChange}
+                  value={formData.phone}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  placeholder="Say what's in your mind."
+                  onChange={handleChange}
+                  value={formData.message}
+                ></textarea>
+              </div>
+              <button className="btn-2" type="submit" disabled={btnLoad}>
+                {btnLoad ? (
+                  <span className="btn-loader"></span>
+                ) : (
+                  <>
+                    Submit
+                    <span>
+                      <img
+                        src="/up-right-arrow2.png"
+                        alt="icon"
+                        className="first"
+                      />
+                      <img
+                        src="/up-right-arrow2.png"
+                        alt="icon"
+                        className="second"
+                      />
+                    </span>
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
+           <div className="right-content">
                     <div className="right-content-group">
                         <div className="title2">Precision 3D Printing & Manufacturing</div>
                         <div className="description2">From rapid prototypes to production-grade parts, we bridge the gap between concept and reality with advanced additive manufacturing technologies.</div>
@@ -248,9 +298,8 @@ export const Services = () => {
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
+      </div>
     </section>
-
-  )
-}
+  );
+};
