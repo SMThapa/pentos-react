@@ -1,16 +1,10 @@
-import React, { useEffect, useRef, Fragment } from "react";
-import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import {Fragment } from "react";
 
 import { Testimonials } from "./components/Testimonials";
 import { Blogs } from "./components/Blogs";
 import Faq from "./components/Faq";
 import { Link } from "react-router-dom";
-
-gsap.registerPlugin(ScrollTrigger);
+import { Canvas } from "../components/Canvas";
 
 export const Home = () => {
   const canvasRef = useRef(null);
@@ -65,18 +59,18 @@ const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
 hemiLight.position.set(0, 20, 0);
 scene.add(hemiLight);
 
-
+// Main directional light (like the sun)
 const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1.2);
 directionalLight1.position.set(10, 20, 10);
 directionalLight1.castShadow = true;
 scene.add(directionalLight1);
 
-
+// Fill directional light from opposite side
 const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
 directionalLight2.position.set(-10, 15, -10);
 scene.add(directionalLight2);
 
-
+// Point light close to the model for extra brightness
 const pointLight = new THREE.PointLight(0xffffff, 0.8, 50);
 pointLight.position.set(0, 5, 5);
 scene.add(pointLight);
@@ -94,6 +88,7 @@ scene.add(pointLight);
         const model = gltf.scene;
         modelRef.current = model;
 
+        // Center model
         const box = new THREE.Box3().setFromObject(model);
         const center = new THREE.Vector3();
         box.getCenter(center);
@@ -210,7 +205,8 @@ scene.add(pointLight);
 
   return (
     <Fragment>
-        <canvas id="myCanvas" ref={canvasRef}></canvas>
+        {/* <canvas id="myCanvas" ref={canvasRef}></canvas> */}
+        <Canvas/>
         <main id="hero">
             <div className="glowing-object"></div>
             <div className="hero-contents">
